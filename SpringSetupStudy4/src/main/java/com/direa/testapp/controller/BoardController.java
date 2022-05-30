@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.direa.testapp.paging.PagingBean;
+import com.direa.testapp.paging.PagingDto;
 import com.direa.testapp.paging.PagingService;
 import com.direa.testapp.service.IboardService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -93,11 +93,7 @@ public class BoardController {
 		//전체 글 개수	
 		int cnt = iboardService.getCnt();
 		
-		//PagingBean 사용하기
-		PagingBean pb 
-		= pagingService.getPagingBean(Integer.parseInt(params.get("page")), cnt, 10, 5);
-		System.out.println("check");
-		
+		PagingDto pb = pagingService.getPagingBean(Integer.parseInt(params.get("page")), cnt, 10, 5);		
 		
 		params.put("startCount", Integer.toString(pb.getStartCount())); 
 		params.put("endCount", Integer.toString(pb.getEndCount()));
@@ -125,8 +121,7 @@ public class BoardController {
 	 */
 	// getDetail
 	@RequestMapping(value = "/aBook")
-	public ModelAndView getDetail (@RequestParam HashMap<String, String> params,
-						       ModelAndView mav) throws Throwable {
+	public ModelAndView getDetail (@RequestParam HashMap<String, String> params, ModelAndView mav) throws Throwable {
 		
 		HashMap<String, String> data = iboardService.getBook(params);
 		
@@ -135,6 +130,8 @@ public class BoardController {
 		mav.setViewName("detail");
 		return mav;
 	}
+	
+	
 	
 
 	/**
@@ -145,11 +142,11 @@ public class BoardController {
 	 * @throws Throwable
 	 * 
 	 */
-	
 	@RequestMapping(value = "/aBookAction/{gbn}", method = RequestMethod.POST,  produces = "text/json;charset=UTF-8")
 	@ResponseBody 
 	public String abookProcess(@RequestParam HashMap<String, String> params,
 							   @PathVariable String gbn) throws Throwable {
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		Map<String, Object> modelMap = new HashMap<String, Object>();
@@ -172,7 +169,7 @@ public class BoardController {
 			modelMap.put("res", "failed");
 		}
 		
-		return mapper.writeValueAsString(modelMap);
+		return mapper.writeValueAsString(modelMap); 
 	}
 	
 	

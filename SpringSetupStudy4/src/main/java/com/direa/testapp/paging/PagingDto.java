@@ -1,6 +1,6 @@
 package com.direa.testapp.paging;
 
-public class PagingBean {
+public class PagingDto {
 	//페이지 게시글 시작번호
 	int startCount;
 	//페이지 게시글 종료번호

@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PagingService {
 
-	/*****************
-	 * Custom Paging *
-	 *****************/
+
 	//테이블 시작row
 	public int getStartCount(int page, int viewCnt) {
 		int startCount = 0;
@@ -67,8 +65,8 @@ public class PagingService {
 	}
 	
 	//빈형식으로 취득
-	public PagingBean getPagingBean(int page, int maxCount, int viewCnt, int pageCnt) {
-		PagingBean pb = new PagingBean();
+	public PagingDto getPagingBean(int page, int maxCount, int viewCnt, int pageCnt) {
+		PagingDto pb = new PagingDto();
 		
 		pb.setStartCount(getStartCount(page, viewCnt));
 		pb.setEndCount(getEndCount(page, viewCnt));

@@ -3,13 +3,12 @@ function getList(nowPage) {
 	
 	var data = {page : nowPage};
 	var callback = ajaxComm("/aBookListAjax", data, 'get');
-	callback.done( function(data){
+	callback.done( function(data) {
 		console.log(data);
 		makeHtmlList(data.list);
 		drawPaging(data.pb);
 	})
 }
-
 
 
 /* 리스트 테이블 그리는 함수*/
@@ -30,8 +29,6 @@ function makeHtmlList (list) {
 	
 	$('#appendPath').append(HTML);
 }
-
-
 
 
 
@@ -76,6 +73,7 @@ function drawPaging(pb) {
 
 /* 신규등록 Ajax */
 function createSubmit() {
+	
 	var data = {
 		book_title  : $('#book_title').val(),
 		book_author : $('#book_author').val(),
@@ -131,15 +129,18 @@ function deleteData(id) {
 			alert("삭제중 에러가 발생했습니다...");
 		}
 	})
-	
 }
 
 
+
+
+
+
+// ========================= 이동 함수 =========================
 /* 상세보기 뷰로 이동*/
 function goDetailView(id) {
 	location.href="/aBook?no="+id;
 }
-
 
 /* 리스트로 이동*/
 function goList() {
@@ -157,7 +158,5 @@ function goUpdate(id) {
 function goCreateView() {
 	location.href='/aBookWrite';
 }
-
-
 
 
