@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.table_wrap {
+	width : 1000px;
+}
+.btn_wrap{
+	width : 1000px;
+	text-align: right;
+	margin-top : 20px;
+}
+.writeBtn {
+	margin-right: 15px;
+}
+table {
+	width : 1000px;
+	text-align: center;
+	margin : 20px auto;
+	border-collapse: collapse;
+}
+thead tr {
+	height : 40px;
+ 	border-bottom: 1px solid black;
+}
+tbody tr {
+	height : 30px;
+ 	border-bottom: 1px solid #d7d7d7;
+}
+
+tbody tr td:nth-child(2) {
+	font-weight: bold;
+}
+.writeBtn, tbody tr td:nth-child(2), #paging_wrap span:hover {
+	cursor: pointer;
+}
+
+tbody tr td:nth-child(2):hover {
+	text-decoration: underline;
+	color: purple;
+}
